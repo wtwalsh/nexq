@@ -1,0 +1,5 @@
+<template name="CreateTask">
+  <h1>Create New Task</h1>
+  {{> quickForm collection="Tasks" id="createTaskForm" type="insert"
+  omitFields="createdAt" buttonContent="Create"}}
+</template>
