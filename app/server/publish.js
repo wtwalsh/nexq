@@ -7,3 +7,13 @@ Meteor.publish('tasks', function() {
 Meteor.publish('skills', function() {
   return Skills.find();
 });
+
+// currently all users are published
+Meteor.publish(null, function (){
+  return Meteor.users.find();
+});
+
+// currently all roles are published
+Meteor.publish(null, function (){ 
+  return Meteor.roles.find();
+});
