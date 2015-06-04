@@ -84,8 +84,7 @@ if (Meteor.isServer) {
   
   Restivus.addCollection(Tasks, {
     excludedEndpoints: [
-      'deleteAll',
-      'delete'
+      'deleteAll'
     ],
     routeOptions: {
       authRequired: true,
