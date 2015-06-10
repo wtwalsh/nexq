@@ -20,7 +20,10 @@
         <td>{{countActivities}}</td>
         <td>{{note}}</td>
         <td>
-          {{#linkTo route="taskEdit"}}
+          {{#linkTo route="completeTask"}}
+            <i class="fa fa-pencil-square-o"></i>
+          {{/linkTo}}
+          {{#linkTo route="editTask"}}
             <i class="fa fa-pencil-square-o"></i>
           {{/linkTo}}
         </td>

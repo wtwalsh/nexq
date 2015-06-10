@@ -21,7 +21,21 @@ Router.route('/create_task', {
 Router.route('/task_list', {
   name: 'taskList',
   controller: 'TaskListController',
-  action: 'action',
+  action: 'list',
+  where: 'client'
+});
+
+Router.route('/task/edit/:_id', {
+  name: 'editTask',
+  controller: 'TaskListController',
+  action: 'edit',
+  where: 'client'
+});
+
+Router.route('/task/complete/:_id', {
+  name: 'completeTask',
+  controller: 'TaskListController',
+  action: 'complete',
   where: 'client'
 });
 

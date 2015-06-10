@@ -1,6 +1,9 @@
-// currently all tasks are published
-Meteor.publish('tasks', function() {
-  return Tasks.find();
+// publish all tasks to admins, only assigned tasks to users
+Meteor.publish('pub-tasks', function() {
+  if (Roles.userIsInRole(this.userId, ['admin']))
+    return Tasks.find({});
+  else
+    return Tasks.find({assignedTo: this.userId}, {sort: {priority: 1}});
 });
 
 // currently all skills are published
