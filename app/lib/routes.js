@@ -26,9 +26,9 @@ Router.route('/task_list', {
 });
 
 Router.route('/task/edit/:_id', {
-  name: 'editTask',
+  name: 'promoteTask',
   controller: 'TaskListController',
-  action: 'edit',
+  action: 'promote',
   where: 'client'
 });
 

@@ -19,13 +19,11 @@ TaskListController = RouteController.extend({
     this.render('TaskList', { /* data: {} */});
   },
   
-  edit: function () {
-    alert ("edit " + this.params._id);
+  promote: function () {
     this.render('TaskList')
   },
   
   complete: function () {
-    //alert ("Complete " + this.params._id);
     doSomething();
     this.render('TaskList')
   }
@@ -33,5 +31,9 @@ TaskListController = RouteController.extend({
 
 function doSomething () {
   alert("DS");
+  return;
+}
+
+function assignNextTask () {
   return;
 }
