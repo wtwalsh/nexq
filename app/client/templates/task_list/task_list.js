@@ -14,7 +14,7 @@ Template.TaskList.helpers({
       fields: [
         {key: 'priority', label: 'Priority', hidden: true, sort: 'asc'},
         {key: 'accountId', label: 'Account ID', fn: function (acct) {
-          return new Spacebars.SafeString('<a href="https://portal.onstride.co.uk/accounts/'+acct+'" target="_blank">'+acct+'</a>');
+          return new Spacebars.SafeString(process.env.ACCOUNT_LINK_URL+acct+'" target="_blank">'+acct+'</a>');
         }},
         {key: 'skill', label: 'Skill'},
         {key: 'note', label: 'Note'},
