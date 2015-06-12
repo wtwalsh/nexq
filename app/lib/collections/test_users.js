@@ -3,11 +3,11 @@ if (Meteor.isServer) {
   Meteor.startup(function() {
     if (!Meteor.users.findOne()) {
       var testId = Accounts.createUser({
-        email: "admin@test.com",
-        password: "testpass"
+        email: process.env.DEFAULT_USER,
+        password: process.env.DEFAULT_PASSWORD
       });
       
-      Roles.addUsersToRoles(testId, ['admin', 'Skill1', 'Skill2', 'Skill3']);
+      Roles.addUsersToRoles(testId, ['admin']);
     }
   });
 }

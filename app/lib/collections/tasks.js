@@ -18,18 +18,6 @@ Tasks.attachSchema(
       }
     },
 
-    // Force value to be current date (on server) upon update and don't allow it to be set upon insert
-    updatedAt: {
-      type: Date,
-      autoValue: function() {
-        if (this.isUpdate) {
-          return new Date();
-        }
-      },
-      denyInsert: true,
-      optional: true
-    },
-
     accountId: {
       type: Number,
       label: "Account ID",
