@@ -1,0 +1,16 @@
+<template name="Tasks">
+  <h1>Tasks</h1>
+  {{> reactiveTable settings=tasksTableSettings}}
+</template>
+
+<template name="TaskComplete">
+  {{#linkTo route="taskComplete"}}
+    <i class="fa fa-check-circle fa-border fa-lg"></i>
+  {{/linkTo}}
+</template>
+
+<template name="TaskPromote">  
+  {{#linkTo route="taskPromote"}}
+    <i class="fa fa-arrow-circle-up fa-border fa-lg"></i>
+  {{/linkTo}}
+</template>

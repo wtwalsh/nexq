@@ -14,8 +14,9 @@
         <ul class="nav navbar-nav navbar-right">
             <li>{{#linkTo route="home"}}<i class="fa fa-home"></i> Home{{/linkTo}}</li>
             {{#if currentUser}}
-              <li>{{#linkTo route="taskList"}}<i class="fa fa-align-justify"></i> All Tasks{{/linkTo}}</li>
-              <li>{{#linkTo route="createTask"}}<i class="fa fa-plus"></i> Create Task{{/linkTo}}</li>
+              <li>{{#linkTo route="tasks"}}<i class="fa fa-align-justify"></i> Tasks{{/linkTo}}</li>
+              <li>{{#linkTo route="users"}}<i class="fa fa-align-justify"></i> Users{{/linkTo}}</li>
+              <li>{{#linkTo route="taskCreate"}}<i class="fa fa-plus"></i> Create Task{{/linkTo}}</li>
             {{/if}}
             <li><div class="nav navbar-nav navbar-right"> {{> loginButtons}}</div></li>
         </ul>

@@ -6,11 +6,6 @@ Meteor.publish('pub-tasks', function() {
     return Tasks.find({assignedTo: this.userId}, {sort: {priority: 1}});
 });
 
-// currently all skills are published
-Meteor.publish('skills', function() {
-  return Skills.find();
-});
-
 // currently all users are published
 Meteor.publish(null, function (){
   return Meteor.users.find();

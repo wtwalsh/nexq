@@ -1,23 +1,23 @@
 /*****************************************************************************/
-/* CreateTask: Event Handlers */
+/* UserCreate: Event Handlers */
 /*****************************************************************************/
-Template.CreateTask.events({
+Template.UserCreate.events({
 });
 
 /*****************************************************************************/
-/* CreateTask: Helpers */
+/* UserCreate: Helpers */
 /*****************************************************************************/
-Template.CreateTask.helpers({
+Template.UserCreate.helpers({
 });
 
 /*****************************************************************************/
-/* CreateTask: Lifecycle Hooks */
+/* UserCreate: Lifecycle Hooks */
 /*****************************************************************************/
-Template.CreateTask.created = function () {
+Template.UserCreate.created = function () {
 };
 
-Template.CreateTask.rendered = function () {
+Template.UserCreate.rendered = function () {
 };
 
-Template.CreateTask.destroyed = function () {
+Template.UserCreate.destroyed = function () {
 };

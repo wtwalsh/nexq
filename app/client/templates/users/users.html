@@ -1,0 +1,10 @@
+<template name="Users">
+  <h1>Users</h1>
+  {{> reactiveTable settings=usersTableSettings}}
+</template>
+
+<template name="UserEdit">
+  {{#linkTo route="userEdit"}}
+    <i class="fa fa-check-circle fa-border fa-lg"></i>
+  {{/linkTo}}
+</template>

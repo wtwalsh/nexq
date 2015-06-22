@@ -1,18 +1,18 @@
 /*****************************************************************************/
-/* TaskList: Event Handlers */
+/* Tasks: Event Handlers */
 /*****************************************************************************/
-Template.TaskList.events({
+Template.Tasks.events({
 });
 
 /*****************************************************************************/
-/* TaskList: Helpers */
+/* Tasks: Helpers */
 /*****************************************************************************/
-Template.TaskList.helpers({
-  tableSettings: function() {
+Template.Tasks.helpers({
+  tasksTableSettings: function() {
     return {
       collection: Tasks,
       fields: [
-        {key: 'priority', label: 'Priority', hidden: true, sort: 'asc'},
+        {key: 'priority', label: 'Priority', hidden: true, sortOrder: 0, sortDirection: 'ascending'},
         {key: 'accountId', label: 'Account ID', fn: function (acct) {
           // replace Safestring with acct if you want to use number vs. a link
           // change link in settings.json
@@ -21,21 +21,21 @@ Template.TaskList.helpers({
         {key: 'skill', label: 'Skill'},
         {key: 'note', label: 'Note'},
         {key: 'assignedTo', label: 'Assigned'},
-        {key: '_id', headerClass: 'col-sm-1', tmpl: Template.TaskListComplete},
-        {key: '_id', headerClass: 'col-sm-1', tmpl: Template.TaskListPromote}
+        {key: '_id', headerClass: 'col-sm-1', tmpl: Template.TaskComplete},
+        {key: '_id', headerClass: 'col-sm-1', tmpl: Template.TaskPromote}
       ]
     };
   }
 });
 
 /*****************************************************************************/
-/* TaskList: Lifecycle Hooks */
+/* Tasks: Lifecycle Hooks */
 /*****************************************************************************/
-Template.TaskList.created = function () {
+Template.Tasks.created = function () {
 };
 
-Template.TaskList.rendered = function () {
+Template.Tasks.rendered = function () {
 };
 
-Template.TaskList.destroyed = function () {
+Template.Tasks.destroyed = function () {
 };

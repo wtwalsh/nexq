@@ -1,12 +1,10 @@
-TaskListController = RouteController.extend({
+TasksController = RouteController.extend({
   subscriptions: function () {
     this.subscribe('pub-tasks', {});
-    this.subscribe('skills', {});
   },
 
   data: function () {
-    // return a global data context like this:
-    // Items.findOne({_id: this.params._id});
+    Tasks.findOne({_id: this.params._id});
   },
 
   list: function () {
@@ -16,16 +14,16 @@ TaskListController = RouteController.extend({
     // might also perform some conditional logic. Override
     // the data context by providing it as an option in the
     // last parameter.
-    this.render('TaskList', { /* data: {} */});
+    this.render('Tasks', { /* data: {} */});
   },
   
   promote: function () {
-    this.render('TaskList')
+    this.render('Tasks')
   },
   
   complete: function () {
     doSomething();
-    this.render('TaskList')
+    this.render('Tasks')
   }
 });
 
