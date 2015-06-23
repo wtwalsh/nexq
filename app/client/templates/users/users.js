@@ -15,7 +15,7 @@ Template.Users.helpers({
         {key: 'emails.0.address', label: 'Email'},
         {key: 'createdAt', label: 'Created', sortOrder: 0, sortDirection: 'ascending'},
         {key: 'roles', label: 'Skills'},
-        {key: '_id', label: 'Edit', headerClass: 'col-sm-1', tmpl: Template.UserEdit}
+        {key: '_id', label: 'Edit', headerClass: 'col-sm-1', tmpl: Template.UserEditButton}
       ]
     };
   }

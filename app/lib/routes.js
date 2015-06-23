@@ -1,13 +1,25 @@
-// prevent unauthorized access to the routes
-Router.onBeforeAction(function () {
-  if(!Meteor.user()) {
+// route access: need to be logged-in for all routes except home
+var requireLogin = function(pause) {
+  if (!Meteor.user()) {
+    Router.go('home');
+  }
+  this.next();
+};
+
+// require admin for certain routes
+var requireAdmin = function(pause) {
+  var user = Meteor.user();
+  if (!Roles.userIsInRole(user, ['Admin'])) {
     this.render('AccessDenied');
   }
-  else {
+  else
     this.next();
-  }
-}, {only: ['tasks']}) // edit these in the future to be specific to authorizations
+};
 
+Router.onBeforeAction(requireLogin, {except: ['home']});
+Router.onBeforeAction(requireAdmin, {only: ['userEdit']});
+
+// routes
 Router.configure({
   layoutTemplate: 'MasterLayout',
   loadingTemplate: 'Loading',

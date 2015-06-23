@@ -4,7 +4,7 @@ UsersController = RouteController.extend({
   },
 
   data: function () {
-    Users.findOne({_id: this.params._id});
+    // Meteor.users.findOne({_id: this.params._id});
   },
 
   list: function () {
@@ -15,5 +15,10 @@ UsersController = RouteController.extend({
     // the data context by providing it as an option in the
     // last parameter.
     this.render('Users', { /* data: {} */});
+  },
+
+  edit: function() {
+    var currentUser = Meteor.users.findOne({_id: this.params._id});
+    this.render('UserEdit', {data: currentUser});
   }
 });

@@ -20,12 +20,12 @@ Tasks.attachSchema(
 
     accountId: {
       type: Number,
-      label: "Account ID",
+      label: "Account ID"
     },
     
     skill: {
       type: String, 
-      label: "Skill",
+      label: "Skill"
     },
     
     note: {
@@ -68,21 +68,7 @@ if (Meteor.isServer) {
     ],
     routeOptions: {
       authRequired: true,
-      roleRequired: 'admin'
-    }
-  });
-  
-  Tasks.allow({
-    insert: function (userId, doc) {
-      return false;
-    },
-
-    update: function (userId, doc, fieldNames, modifier) {
-      return false;
-    },
-
-    remove: function (userId, doc) {
-      return false;
+      roleRequired: 'Admin'
     }
   });
 }

@@ -21,8 +21,8 @@ Template.Tasks.helpers({
         {key: 'skill', label: 'Skill'},
         {key: 'note', label: 'Note'},
         {key: 'assignedTo', label: 'Assigned'},
-        {key: '_id', headerClass: 'col-sm-1', tmpl: Template.TaskComplete},
-        {key: '_id', headerClass: 'col-sm-1', tmpl: Template.TaskPromote}
+        {key: '_id', label: 'C', headerClass: 'col-sm-1', tmpl: Template.TaskCompleteButton},
+        {key: '_id', label: 'P', headerClass: 'col-sm-1', tmpl: Template.TaskPromoteButton}
       ]
     };
   }

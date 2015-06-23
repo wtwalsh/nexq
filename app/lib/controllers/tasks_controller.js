@@ -4,7 +4,7 @@ TasksController = RouteController.extend({
   },
 
   data: function () {
-    Tasks.findOne({_id: this.params._id});
+    // Tasks.findOne({_id: this.params._id});
   },
 
   list: function () {
@@ -18,20 +18,17 @@ TasksController = RouteController.extend({
   },
   
   promote: function () {
-    this.render('Tasks')
+    this.render('Tasks');
   },
   
   complete: function () {
-    doSomething();
-    this.render('Tasks')
+    var curUser = Meteor.user();
+    var curTask = Tasks.findOne({_id: this.params._id});
+    
+    console.log(curUser._id + " is completing " + curTask._id);
+    
+    Meteor.call('completeTask', curUser, curTask);
+    Meteor.call('assignTask', curUser);
+    Router.go('tasks');
   }
 });
-
-function doSomething () {
-  alert("DS");
-  return;
-}
-
-function assignNextTask () {
-  return;
-}
