@@ -102,3 +102,11 @@ Router.route('/users/delete/:_id', {
   action: 'delete',
   where: 'client'
 });
+
+
+Router.route('stats', {
+  name: 'stats',
+  controller: 'StatsController',
+  action: 'action',
+  where: 'client'
+});

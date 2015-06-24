@@ -20,9 +20,27 @@ Template.Tasks.helpers({
         }},
         {key: 'skill', label: 'Skill'},
         {key: 'note', label: 'Note'},
-        {key: 'assignedTo', label: 'Assigned'},
-        {key: '_id', label: 'C', headerClass: 'col-sm-1', tmpl: Template.TaskCompleteButton},
-        {key: '_id', label: 'P', headerClass: 'col-sm-1', tmpl: Template.TaskPromoteButton}
+        {key: 'assignedTo', label: 'Assigned', fn: function (id) {
+          var u = Meteor.users.findOne(id)
+          
+          if (!(typeof u === 'undefined')) {
+            u = u.emails[0].address;
+            u = u.substr(0, u.indexOf('@'));
+            return u;
+          }
+          else
+            return;
+        }},
+        {key: '_id', label: 'Last Activity', fn: function (value, object) {
+          var t = Activities.findOne({accountId: object.accountId, accountType: object.skill}, {sort: {createdAt: -1}});
+          
+          if (!(typeof t === 'undefined'))
+            return moment(t.createdAt).format("MMM DD LT");
+          else
+            return;
+        }},
+        {key: '_id', label: 'Complete', headerClass: 'col-sm-1', tmpl: Template.TaskCompleteButton},
+        {key: '_id', label: 'Promote', headerClass: 'col-sm-1', tmpl: Template.TaskPromoteButton}
       ]
     };
   }

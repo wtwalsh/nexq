@@ -18,14 +18,17 @@ TasksController = RouteController.extend({
   },
   
   promote: function () {
-    this.render('Tasks');
+    var curUser = Meteor.user();
+    var curTask = Tasks.findOne({_id: this.params._id});
+    
+    Meteor.call('promoteTask', curUser, curTask);
+    Meteor.call('assignTask', curUser);
+    Router.go('tasks');
   },
   
   complete: function () {
     var curUser = Meteor.user();
     var curTask = Tasks.findOne({_id: this.params._id});
-    
-    console.log(curUser._id + " is completing " + curTask._id);
     
     Meteor.call('completeTask', curUser, curTask);
     Meteor.call('assignTask', curUser);

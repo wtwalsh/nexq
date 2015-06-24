@@ -12,8 +12,10 @@ Template.Users.helpers({
     return {
       collection: Meteor.users,
       fields: [
-        {key: 'emails.0.address', label: 'Email'},
-        {key: 'createdAt', label: 'Created', sortOrder: 0, sortDirection: 'ascending'},
+        {key: 'emails.0.address', label: 'Email', sortOrder: 0, sortDirection: 'ascending'},
+        {key: 'createdAt', label: 'Created', fn: function (value, object) {
+          return moment(value).format("YYYY MMM DD LT");
+        }},
         {key: 'roles', label: 'Skills'},
         {key: '_id', label: 'Edit', headerClass: 'col-sm-1', tmpl: Template.UserEditButton}
       ]

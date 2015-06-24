@@ -16,7 +16,7 @@ Meteor.methods({
   },
   
   completeTask: function(user, task) {
-    console.log(user._id + " attempting to complete " + task._id);
+    // console.log(user._id + " attempting to complete " + task._id);
     
     // create an activity record for completing the task
     var completeAct = {
@@ -27,27 +27,51 @@ Meteor.methods({
     };
 
     Activities.insert(completeAct);
-    console.log(completeAct);
+    // console.log(completeAct);
     
     // remove the task from the task collection
     Tasks.remove(task._id);
     return;
   },
   
+  promoteTask: function(user, task) {
+    // console.log(user._id + " attempting to promote " + task._id);
+
+    // create an activity record for promoting the task
+    var promoteAct = {
+      accountId: task.accountId,
+      accountType: task.skill,
+      username: user.emails[0].address,
+      activityType: "Promote"
+    };
+
+    Activities.insert(promoteAct);
+    // console.log(promoteAct);
+    
+    // promote the task by removing the assignedTo field and setting priority to -1
+    Tasks.update(task._id, {$unset: {assignedTo: ""}, $set: {priority: -1}});
+    return;
+  },
+  
   assignTask: function(user) {
     var skills = Roles.getRolesForUser(user);
-    var nextTask = Tasks.findOne({skill: {$in:skills}}, {sort: {priority: 1}})
+    var curTask = Tasks.findOne({assignedTo: user._id});
+    var nextTask = Tasks.findOne({skill: {$in:skills}, assignedTo: null}, {sort: {priority: 1}})
     
-    if (typeof nextTask === 'undefined') {
-      console.log("No tasks to assign.");
+    // check if already assigned a task
+    if (typeof curTask === 'undefined') {
+      // check if there is an available task for the user, if so assign it
+      if (!(typeof nextTask === 'undefined')) {
+        Tasks.update(nextTask, {$set: {assignedTo: user._id}});
+      }
+      else {
+        // console.log("No available task to assign")
+        return;
+      }
     }
     else {
-      console.log("Assigning " + nextTask._id + " to " + user.emails[0].address);
-      // TODO if already assigned an account, do not assign another one
-      // find a way to unassign accounts on logout
-      Tasks.update(nextTask, {$set: {assignedTo: user._id}});
+      // console.log("Already assigned a task - skipping assignment")
+      return;
     }
-    
-    return;
   }
 });
