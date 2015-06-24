@@ -16,7 +16,7 @@ var requireAdmin = function(pause) {
     this.next();
 };
 
-Router.onBeforeAction(requireLogin, {except: ['home']});
+Router.onBeforeAction(requireLogin, {only: ['tasks', 'users']});
 Router.onBeforeAction(requireAdmin, {only: ['userEdit']});
 
 // routes
