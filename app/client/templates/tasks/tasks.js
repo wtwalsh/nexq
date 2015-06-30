@@ -31,11 +31,14 @@ Template.Tasks.helpers({
           else
             return;
         }},
-        {key: '_id', label: 'Last Activity', fn: function (value, object) {
+        {key: '_id', label: 'Last Completed', fn: function (value, object) {
           var t = Activities.findOne({accountId: object.accountId, accountType: object.skill}, {sort: {createdAt: -1}});
           
-          if (!(typeof t === 'undefined'))
-            return moment(t.createdAt).format("MMM DD LT");
+          if (!(typeof t === 'undefined')) {
+            var u = t.username
+            u = u.substr(0, u.indexOf('@'));
+            return moment(t.createdAt).format("MMM DD LT") + ", " + u;
+          }
           else
             return;
         }},

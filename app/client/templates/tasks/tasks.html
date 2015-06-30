@@ -10,7 +10,9 @@
 </template>
 
 <template name="TaskPromoteButton">
-  {{#linkTo route="taskPromote"}}
-    <i class="fa fa-arrow-circle-up fa-border fa-lg"></i>
-  {{/linkTo}}
+  {{#if isInRole 'Admin'}}
+    {{#linkTo route="taskPromote"}}
+      <i class="fa fa-arrow-circle-up fa-border fa-lg"></i>
+    {{/linkTo}}
+  {{/if}}
 </template>

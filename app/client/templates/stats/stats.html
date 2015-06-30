@@ -1,3 +1,16 @@
 <template name="Stats">
-  <h1>Coming soon...</h1>
+  <h1>Stats</h1>
+  <table>
+    <caption>Task Totals</caption>
+    <tr>
+      <th>Skill</th>
+      <th>Count</th>
+    </tr>
+    {{#each roles}}
+    <tr>
+      <td>{{name}}</td>
+      <td>{{countRole}}</td>
+    </tr>
+    {{/each}}
+  </table>
 </template>
