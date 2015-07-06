@@ -57,15 +57,12 @@ Tasks.attachSchema(
 
 if (Meteor.isServer) {
   // set up Restivus API
-  Restivus.configure({
-    useAuth: true,
+  var RestAPI = new Restivus({
+    useDefaultAuth: true,
     prettyJson: true
   });
   
-  Restivus.addCollection(Tasks, {
-    excludedEndpoints: [
-      'deleteAll'
-    ],
+  RestAPI.addCollection(Tasks, {
     routeOptions: {
       authRequired: true,
       roleRequired: 'Admin'
