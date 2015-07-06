@@ -62,7 +62,17 @@ Meteor.methods({
     if (typeof curTask === 'undefined') {
       // check if there is an available task for the user, if so assign it
       if (!(typeof nextTask === 'undefined')) {
+        // assign the task by setting the assignedTo property to the user's ID
         Tasks.update(nextTask, {$set: {assignedTo: user._id}});
+        
+        // create an assignment record
+        var nextAssignment = {
+          accountId: nextTask.accountId,
+          accountType: nextTask.skill,
+          username: user.emails[0].address,
+        };
+        
+        Assignments.insert(nextAssignment);
       }
       else {
         // console.log("No available task to assign")

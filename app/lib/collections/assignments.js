@@ -1,32 +1,40 @@
 Assignments = new Mongo.Collection('assignments');
 
-
-if (Meteor.isServer) {
-  Assignments.allow({
-    insert: function (userId, doc) {
-      return false;
+Activities.attachSchema(
+  new SimpleSchema({
+    // Force value to be current date (on server) upon insert and prevent updates thereafter
+    createdAt: {
+      type: Date,
+      autoValue: function() {
+        if (this.isInsert) {
+          return new Date();
+        }
+        else if (this.isUpsert) {
+          return {$setOnInsert: new Date()};
+        }
+        else {
+          this.unset();
+        }
+      }
     },
 
-    update: function (userId, doc, fieldNames, modifier) {
-      return false;
+    accountId: {
+      type: Number,
+      label: "Account ID"
     },
-
-    remove: function (userId, doc) {
-      return false;
+    
+    accountType: {
+      type: String, 
+      label: "Account Type"
+    },
+    
+    username: {
+      type: String,
+      label: "User Email"
     }
-  });
-
-  Assignments.deny({
-    insert: function (userId, doc) {
-      return true;
-    },
-
-    update: function (userId, doc, fieldNames, modifier) {
-      return true;
-    },
-
-    remove: function (userId, doc) {
-      return true;
-    }
-  });
-}
+  }),
+  {
+    transform: true,
+    replace: true
+  }
+);
