@@ -21,6 +21,7 @@ if(Meteor.isServer) {
 if(Meteor.isClient) {
   try {
     UserStatus.startMonitor({
+      // idle after five minutes, do not count blurring the window as idle
       threshold: 300000,
       idleOnBlur: false
     });
