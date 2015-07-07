@@ -5,6 +5,12 @@
 
 <template name="UserEditButton">
   {{#linkTo route="userEdit"}}
-    <i class="fa fa-pencil-square-o fa-lg"></i>
+    <span class="fa fa-pencil-square-o fa-lg"></span>
+  {{/linkTo}}
+</template>
+
+<template name="UserStatus">
+  {{#linkTo route="userLogout"}}
+    <span class="label {{statClass}}">{{statName}}</span>
   {{/linkTo}}
 </template>

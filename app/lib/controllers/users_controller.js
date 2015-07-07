@@ -18,7 +18,13 @@ UsersController = RouteController.extend({
   },
 
   edit: function() {
-    var currentUser = Meteor.users.findOne({_id: this.params._id});
-    this.render('UserEdit', {data: currentUser});
+    var targetUser = Meteor.users.findOne({_id: this.params._id});
+    this.render('UserEdit', {data: targetUser});
+  },
+  
+  logout: function() {
+    var targetUser = Meteor.users.findOne({_id: this.params._id});
+    Meteor.call('logoutUser', targetUser);
+    Router.go('users');
   }
 });

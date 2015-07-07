@@ -83,5 +83,20 @@ Meteor.methods({
       // console.log("Already assigned a task - skipping assignment")
       return;
     }
+  },
+  
+  clearAssignments: function(user) {
+    Tasks.update({assignedTo: user._id},
+                 {$unset: {assignedTo: ""}},
+                 {multi:true});    
+  },
+  
+  logoutUser: function(user) {
+    // clear any assignments
+    Meteor.call('clearAssignments', user);
+
+    // log the user out by clearing the Meteor login tokens for this user
+    Meteor.users.update(user, {$set: { "services.resume.loginTokens" : [] }});
+    return;
   }
 });

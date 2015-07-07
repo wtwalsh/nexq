@@ -103,6 +103,12 @@ Router.route('/users/delete/:_id', {
   where: 'client'
 });
 
+Router.route('users/logout/:_id', {
+  name: 'userLogout',
+  controller: 'UsersController',
+  action: 'logout',
+  where: 'client'
+});
 
 Router.route('stats', {
   name: 'stats',

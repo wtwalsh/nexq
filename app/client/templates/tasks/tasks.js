@@ -11,6 +11,7 @@ Template.Tasks.helpers({
   tasksTableSettings: function() {
     return {
       collection: Tasks,
+      rowsPerPage: 20,
       fields: [
         {key: 'priority', label: 'Priority', hidden: true, sortOrder: 0, sortDirection: 'ascending'},
         {key: 'accountId', label: 'Account ID', fn: function (acct) {
@@ -44,7 +45,19 @@ Template.Tasks.helpers({
         }},
         {key: '_id', label: 'Complete', headerClass: 'col-sm-1', tmpl: Template.TaskCompleteButton},
         {key: '_id', label: 'Promote', headerClass: 'col-sm-1', tmpl: Template.TaskPromoteButton}
-      ]
+      ],
+      
+      // returns a class for each row, taking a row object as parameter: currently highlights promoted
+      rowClass: function(rowObj) {
+        var p = rowObj.priority;
+        
+        if (p < 0) {
+          return 'warning';
+        }
+        else {
+          return '';
+        }  
+      }
     };
   }
 });
