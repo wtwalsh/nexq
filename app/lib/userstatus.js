@@ -19,6 +19,7 @@ if(Meteor.isServer) {
 
 // CLIENT: Start idle monitor
 if(Meteor.isClient) {
+  // TODO: find a way to check for sync first and re-try vs. requiring client restart for idle timer to work, also will need to try this step
   try {
     UserStatus.startMonitor({
       // idle after five minutes, do not count blurring the window as idle

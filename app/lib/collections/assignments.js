@@ -1,6 +1,6 @@
 Assignments = new Mongo.Collection('assignments');
 
-Activities.attachSchema(
+Assignments.attachSchema(
   new SimpleSchema({
     // Force value to be current date (on server) upon insert and prevent updates thereafter
     createdAt: {

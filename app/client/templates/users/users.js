@@ -21,11 +21,11 @@ Template.Users.helpers({
           else
             return 3;
         }},
-        {key: 'emails.0.address', label: 'Email', sortOrder: 1, sortDirection: 'ascending'},
+        {key: 'emails.0.address', label: 'Email', sortOrder: 2, sortDirection: 'ascending'},
         {key: 'createdAt', label: 'Created', fn: function (value, object) {
           return moment(value).format("YYYY MMM DD LT");
         }},
-        {key: 'roles', label: 'Skills'},
+        {key: 'roles', label: 'Skills', sortOrder: 1, sortDirection: 'ascending'},
         {key: '_id', label: 'Status', tmpl: Template.UserStatus},
         {key: '_id', label: 'Edit', headerClass: 'col-sm-1', tmpl: Template.UserEditButton}
       ]
