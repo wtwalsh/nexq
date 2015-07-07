@@ -13,7 +13,15 @@ Template.Users.helpers({
       collection: Meteor.users,
       rowsPerPage: 20,
       fields: [
-        {key: 'emails.0.address', label: 'Email', sortOrder: 0, sortDirection: 'ascending'},
+        {key: '_id', label: 'Priority', hidden: true, sortOrder: 0, sortDirection: 'ascending', fn: function(value, object) {
+          if (object.status.idle)
+            return 2;
+          else if (object.status.online)
+            return 1;
+          else
+            return 3;
+        }},
+        {key: 'emails.0.address', label: 'Email', sortOrder: 1, sortDirection: 'ascending'},
         {key: 'createdAt', label: 'Created', fn: function (value, object) {
           return moment(value).format("YYYY MMM DD LT");
         }},
