@@ -1,6 +1,12 @@
 UsersController = RouteController.extend({
+  loadingTemplate: 'Loading',
+  
+  waitOn: function () {
+    return Meteor.subscribe('pub-users', {});
+  },
+  
   subscriptions: function () {
-    this.subscribe('pub-tasks', {});
+    this.subscribe('pub-users', {});
   },
 
   data: function () {

@@ -56,7 +56,7 @@ Meteor.methods({
   assignTask: function(user) {
     var skills = Roles.getRolesForUser(user);
     var curTask = Tasks.findOne({assignedTo: user._id});
-    var nextTask = Tasks.findOne({skill: {$in:skills}, assignedTo: null}, {sort: {priority: 1}})
+    var nextTask = Tasks.findOne({skill: {$in:skills}, assignedTo: null}, {sort: {priority: 1, note: 1}});
     
     // check if already assigned a task
     if (typeof curTask === 'undefined') {

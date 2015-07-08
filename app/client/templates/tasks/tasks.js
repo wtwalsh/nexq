@@ -20,7 +20,7 @@ Template.Tasks.helpers({
           return new Spacebars.SafeString(Meteor.settings.public.accountUrl+acct+'" target="_blank">'+acct+'</a>');
         }},
         {key: 'skill', label: 'Skill'},
-        {key: 'note', label: 'Note'},
+        {key: 'note', label: 'Note', sortOrder: 1, sortDirection: 'ascending'},
         {key: 'assignedTo', label: 'Assigned', fn: function (id) {
           var u = Meteor.users.findOne(id)
           
