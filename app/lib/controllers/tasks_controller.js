@@ -3,12 +3,13 @@ TasksController = RouteController.extend({
   
   waitOn: [
     function () {return Meteor.subscribe('pub-tasks', {});},
-    function () {return Meteor.subscribe('pub-activities', {});}
+    //function () {return Meteor.subscribe('pub-activities', {});}
   ],
   
   subscriptions: function () {
     this.subscribe('pub-tasks', {});
     this.subscribe('pub-activities', {});
+    this.subscribe('pub-users', {});
   },
 
   data: function () {
