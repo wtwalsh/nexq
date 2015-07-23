@@ -70,9 +70,10 @@ Meteor.methods({
           accountId: nextTask.accountId,
           accountType: nextTask.skill,
           username: user.emails[0].address,
+          activityType: "Assign"
         };
         
-        Assignments.insert(nextAssignment);
+        Activities.insert(nextAssignment);
       }
       else {
         // console.log("No available task to assign")

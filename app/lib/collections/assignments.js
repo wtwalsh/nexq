@@ -38,3 +38,8 @@ Assignments.attachSchema(
     replace: true
   }
 );
+
+Assignments.initEasySearch(['accountId', 'username'], {
+  'limit': 20,
+  'use': 'mongo-db'
+});

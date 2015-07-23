@@ -17,7 +17,9 @@
               <li>{{#linkTo route="tasks"}}<i class="fa fa-list"></i> Tasks{{/linkTo}}</li>
               <li>{{#linkTo route="users"}}<i class="fa fa-user"></i> Users{{/linkTo}}</li>
               <li>{{#linkTo route="stats"}}<i class="fa fa-bar-chart"></i> Stats{{/linkTo}}</li>
-              <li>{{#linkTo route="history"}}<i class="fa fa-history"></i> History{{/linkTo}}</li>
+              {{#if isInRole 'Admin'}}
+                <li>{{#linkTo route="history"}}<i class="fa fa-history"></i> History{{/linkTo}}</li>
+              {{/if}}
             {{/if}}
             <li><div class="nav navbar-nav navbar-right"> {{> loginButtons}}</div></li>
         </ul>

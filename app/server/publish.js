@@ -22,14 +22,6 @@ Meteor.publish('pub-activities', function (){
     return []; // for now, activities are not published to regular users, this may change if users need to view last activity
 });
 
-// publish all assignments to admins, none at the moment to normal useres
-Meteor.publish('pub-assignments', function (){
-  if (Roles.userIsInRole(this.userId, ['Admin']))
-    return Assignments.find({});
-  else
-    return []; // for now, assignments are not published to regular users, this may change if users need to view last activity
-});
-
 // currently all roles are published
 Meteor.publish(null, function (){ 
   return Meteor.roles.find();

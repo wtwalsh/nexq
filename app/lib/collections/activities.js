@@ -43,3 +43,11 @@ Activities.attachSchema(
     replace: true
   }
 );
+
+Activities.initEasySearch(['accountId', 'username'], {
+  'limit': 20,
+  'use': 'mongo-db',
+  'sort': function() {
+    return {'createdAt': 1};
+  }
+});

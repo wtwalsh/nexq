@@ -1,3 +1,20 @@
 <template name="History">
-  <h1>Find me in app/client/templates/history/history</h1>
+  {{> esInput index="activities" placeholder="Enter an Account ID or username..."}}
+  
+  <ul>
+    {{#esEach index="activities"}}
+      <li>{{createdAt}} {{accountId}} {{accountType}} {{username}} {{activityType}}</li>
+    {{/esEach}}
+  </ul>
+  
+  {{> esLoadMoreButton index="activities"}}
+  
+  {{#ifEsHasNoResults index="activities"}}
+    <div class="no-results">No results found</div>
+  {{/ifEsHasNoResults}}
+  
+  {{#ifEsIsSearching index="activities"}}
+    <div>Searching...</div>
+  {{/ifEsIsSearching}}
+      
 </template>
