@@ -98,5 +98,9 @@ Meteor.methods({
     // log the user out by clearing the Meteor login tokens for this user
     Meteor.users.update(user, {$set: { "services.resume.loginTokens" : [] }});
     return;
+  },
+  
+  deleteUser: function(user) {
+    Meteor.users.remove(user);
   }
 });

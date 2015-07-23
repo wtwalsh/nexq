@@ -2,7 +2,7 @@ TasksController = RouteController.extend({
   loadingTemplate: 'Loading',
   
   waitOn: [
-    function () {return Meteor.subscribe('pub-tasks', {});},
+    function () {return Meteor.subscribe('pub-tasks', {});}
     //function () {return Meteor.subscribe('pub-activities', {});}
   ],
   

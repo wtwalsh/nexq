@@ -116,3 +116,10 @@ Router.route('stats', {
   action: 'action',
   where: 'client'
 });
+
+Router.route('history', {
+  name: 'history',
+  controller: 'HistoryController',
+  action: 'action',
+  where: 'client'
+});

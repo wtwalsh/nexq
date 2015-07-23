@@ -12,8 +12,10 @@ Template.UserEdit.helpers({
     return function (collection, id) {
       var doc = collection.findOne(id);
       if (confirm('Really delete user: "' + doc.emails[0].address + '"?')) {
-        this.remove();
-        Router.go('users')
+        // this is not working due to permissions, try a method call
+        // this.remove(); 
+        Meteor.call('deleteUser', doc);
+        Router.go('users');
       }
     }
   },
