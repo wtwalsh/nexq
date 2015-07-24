@@ -47,6 +47,7 @@ Activities.attachSchema(
 Activities.initEasySearch(['accountId', 'username'], {
   'limit': 20,
   'use': 'mongo-db',
+  'convertNumbers': true,
   'sort': function() {
     return {'createdAt': -1};
   }

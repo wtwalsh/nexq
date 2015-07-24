@@ -14,6 +14,8 @@ Meteor.publish('pub-users', function (){
     return Meteor.users.find({_id: this.userId});
 });
 
+/*
+// do not need to publish activities when using mongo-db easy search
 // publish all activities to admins, none at the moment to normal useres
 Meteor.publish('pub-activities', function (){
   if (Roles.userIsInRole(this.userId, ['Admin']))
@@ -21,6 +23,7 @@ Meteor.publish('pub-activities', function (){
   else
     return []; // for now, activities are not published to regular users, this may change if users need to view last activity
 });
+*/
 
 // currently all roles are published
 Meteor.publish(null, function (){ 
