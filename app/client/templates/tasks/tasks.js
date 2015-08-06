@@ -32,6 +32,7 @@ Template.Tasks.helpers({
           else
             return;
         }},
+        /* Disable the last completed feature for now, cannot publish the whole activities db
         {key: '_id', label: 'Last Completed', fn: function (value, object) {
           var t = Activities.findOne({accountId: object.accountId, accountType: object.skill}, {sort: {createdAt: -1}});
           
@@ -43,6 +44,7 @@ Template.Tasks.helpers({
           else
             return;
         }},
+        */
         {key: '_id', label: 'Complete', headerClass: 'col-sm-1', tmpl: Template.TaskCompleteButton},
         {key: '_id', label: 'Promote', headerClass: 'col-sm-1', tmpl: Template.TaskPromoteButton}
       ],
